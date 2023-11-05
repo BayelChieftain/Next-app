@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 
 interface Props {
     title: string;
@@ -12,6 +12,9 @@ export const FilmDetails: FunctionComponent<Props> = ({
     seasonsCount,
 }) => {
     let [count, setCount] = useState(0)
+    useEffect( () => {
+        console.log(count)
+    }, [count])
     return (
         <div>
             <p>{title || 'Unknown films'}</p>
@@ -19,9 +22,10 @@ export const FilmDetails: FunctionComponent<Props> = ({
             <p>{seasonsCount > 0 ? `Кол-во ${seasonsCount}` : "Нету"}</p>
 
             <div>
-                <button onClick={ () => {count = count - 1}}>-</button>
+                <button onClick={ () => {setCount(count - 1)}}>-</button>
                 {count}
-                <button onClick={ () => {count = count + 1}}>+</button>
+                <button onClick={ () => {setCount(count + 1)}}>+</button>
+
             </div>
         </div>
     )
