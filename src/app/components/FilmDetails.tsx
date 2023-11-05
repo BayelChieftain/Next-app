@@ -1,4 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
+import { useCount } from "../hooks/useCount";
 
 interface Props {
     title: string;
@@ -11,7 +12,7 @@ export const FilmDetails: FunctionComponent<Props> = ({
     genre,
     seasonsCount,
 }) => {
-    let [count, setCount] = useState(0)
+    let {count, increment, decrement} = useCount(0)
     useEffect( () => {
         console.log(count)
     }, [count])
@@ -22,9 +23,9 @@ export const FilmDetails: FunctionComponent<Props> = ({
             <p>{seasonsCount > 0 ? `Кол-во ${seasonsCount}` : "Нету"}</p>
 
             <div>
-                <button onClick={ () => {setCount(count - 1)}}>-</button>
+                <button onClick={decrement}>-</button>
                 {count}
-                <button onClick={ () => {setCount(count + 1)}}>+</button>
+                <button onClick={increment}>+</button>
 
             </div>
         </div>
