@@ -26,3 +26,12 @@ a {
   text-decoration: none;
 }
 
+button {
+  padding: 7px 7px 7px 7px;
+  background-color: rgb(4, 170, 4);
+}
+
+.red {
+  background-color: red;
+}
+

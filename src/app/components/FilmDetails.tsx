@@ -1,5 +1,8 @@
-import { FunctionComponent, useEffect, useState } from "react";
+"use client"
+import { FunctionComponent, useState } from "react";
 import { useCount } from "../hooks/useCount";
+import { FilmInfo } from "./FilmInfo/FilmInfo";
+import '../globals.css'
 
 interface Props {
     title: string;
@@ -13,17 +16,15 @@ export const FilmDetails: FunctionComponent<Props> = ({
     seasonsCount,
 }) => {
     let {count, increment, decrement} = useCount(0)
-    useEffect( () => {
-        console.log(count)
-    }, [count])
     return (
         <div>
-            <p>{title || 'Unknown films'}</p>
-            {Boolean(genre) && <p>{genre}</p>}
-            <p>{seasonsCount > 0 ? `Кол-во ${seasonsCount}` : "Нету"}</p>
-
+            <FilmInfo 
+                title={title}
+                genre={genre}
+                seasonsCount={seasonsCount}
+            />
             <div>
-                <button onClick={decrement}>-</button>
+                <button className="red" onClick={decrement}>-</button>
                 {count}
                 <button onClick={increment}>+</button>
 
