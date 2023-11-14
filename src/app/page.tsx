@@ -1,6 +1,6 @@
 "use client"
 import { FilmDetails} from "./components/FilmDetails"
-import { Reviews } from "./components/Review/Review"
+
 const nm = 2
 export default function Home() {
   return (
@@ -11,8 +11,7 @@ export default function Home() {
        genre="comedy" 
        seasonsCount={nm} 
        />
-       <Reviews reviews={[]}
-       />
+       
       <footer />
     </div>
   )
